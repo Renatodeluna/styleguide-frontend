@@ -1,5 +1,3 @@
-##Styleguide Front-End
-
 #![logo](logo.png)
 
 ## Introduction
