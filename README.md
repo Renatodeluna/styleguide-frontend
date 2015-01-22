@@ -4,7 +4,7 @@
 
 ## Introduction
 
-Welcome, this is a Style Guide for Front-End. A series of recommendations on how to write your CSS and HTML code, based on architectures like SMACSS, BEM, SUIT, @mdo, Idiomatic CSS.
+Welcome, this is a Style Guide for Front-End. A series of recommendations on how to write your CSS, HTML and Javascript code, based on architectures like SMACSS, BEM, SUIT, @mdo, Idiomatic CSS.
 
 Ensuring that all participants in the development of a project to work with the same Code base and using the same terminology: <b>Developing a standard design, fast and lasting results.</b>
 
@@ -13,7 +13,7 @@ Ensuring that all participants in the development of a project to work with the 
 * Block and Elements of the [BEM](http://bem.info/)
 * Categorizations and States of the [SMACSS](http://smacss.com/)
 * Modifiers of the [SUIT CSS](https://suitcss.github.io/)
-* Architecture and Standards of [@mdo](http://diegoeis.github.io/code-guide/) and [Idiomatic CSS](https://github.com/necolas/idiomatic-css)
+* Architecture and Standards of [@mdo](http://mdo.github.io/code-guide/) and [Idiomatic CSS](https://github.com/necolas/idiomatic-css)
 
 ## Benefits
 
@@ -28,7 +28,8 @@ Ensuring that all participants in the development of a project to work with the 
 ## Styleguide Front-End
 
 * <big>**[CSS Styleguide](/css.md)**</big> 
-* <big>**[HTML Styleguide](/html.md)**</big> 
+* <big>**[HTML Styleguide](/html.md)**</big>
+* <big>**[Javascript Styleguide](/javascript.md)**</big> 
 
 ## Nomenclature Stylesheet
 The pre-porcessador SASS was adopted, but it is your choice to use what is most convenient for your project, the Styleguide Front End will be useful to everyone.
@@ -134,5 +135,9 @@ Set your editor with the following settings to avoid common inconsistencies in t
 * Place a new line at the end of files
 
 Consider document and apply these settings for your project with [EditorConfig](http://editorconfig.org).
+
+## Licença
+
+[MIT License](http://opensource.org/licenses/MIT). Copyright 2015, @renatodeluna.
 
 
