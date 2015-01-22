@@ -25,11 +25,104 @@ Ensuring that all participants in the development of a project to work with the 
 * <b>Reduce the learning curve for new team members;</b>
 * <b>Modularization design;</b>
 
-
 ## Styleguide Front-End
 
-* <big>**[CSS Styleguide](/css.md)**</big>
-* <big>**[HTML Styleguide](/html.md)**</big>
+* <big>**[CSS Styleguide](/css.md)**</big> 
+* <big>**[HTML Styleguide](/html.md)**</big> 
+
+## Nomenclature Stylesheet
+The pre-porcessador SASS was adopted, but it is your choice to use what is most convenient for your project, the Styleguide Front End will be useful to everyone.
+
+1 - Utilization hyphen to separate words in large or compound names:
+```scss
+
+  .menu-bar {}
+
+```
+
+2 - Use underscores to separate a block of an element:
+```scss
+
+  .menu_item {}
+
+```
+
+3 - Use double hyphen to structure modifiers:
+```scss
+
+  .button--big {}
+
+```
+
+4 - Use the 'is-' prefix to indicate the state of that element:
+```scss
+
+  .is-active {}
+
+```
+* More details of these nomenclature [CSS Styleguide](/css.md).
+
+## Structure file
+
+```
+  app
+  ├── assets
+  |   ├── fonts
+  |   |
+  |   ├── img
+  |   |   ├── public
+  |   |   └── sprites
+  |   |       ├── default
+  |   |       └── retina
+  |   |
+  |   ├── js
+  |   |   ├── modules
+  |   |   └── vendor
+  |   |       └── jquery
+  |   |
+  |   ├── sass
+  |	  |   ├── base
+  |	  |   |   ├── _reset.scss
+  |	  |   |   ├── _typography.scss  
+  |	  |   |   ├── _fonts.scss
+  |	  |   |   └── _grid.scss
+  |	  |   |
+  |	  │   ├── modules
+  |	  |   |   ├── _buttons.scss
+  |	  |   |   ├── _dropdown.scss
+  |	  |   |   ├── _gallery.scss
+  |	  |   |   └── _modal.scss
+  |	  |   |
+  |	  │   ├── layouts
+  |   |   |   ├── _header.scss
+  |   |   |   ├── _main.scss
+  |   |   |   ├── _footer.scss
+  |   |   |   └── pages
+  |   |   |       ├── _home.scss
+  |   |   |       └── _about.scss
+  |   |   |
+  |	  │   ├── helpers
+  |	  |   |   ├── _class.scss
+  |	  |   |   ├── _functions.scss
+  |	  |   |   ├── _mixins.scss
+  |	  |   |   ├── _placeholder.scss
+  |	  |   |   └── _variables.scss
+  |	  |   |
+  |	  |   ├── breakpoints
+  |	  |   |   ├── _mobile.scss
+  |	  |   |   ├── _tablets.scss
+  |	  |   |   └── _desktop.scss
+  |	  |   |
+  |	  │   ├── style.scss
+  |	  |   └── style-ie.scss
+  |	  |
+  |	  └── css
+  |	      |── style.css
+  |	      └── style-ie.css
+  |
+  └── index.html
+  
+```
 
 ## EditorConfig
 
