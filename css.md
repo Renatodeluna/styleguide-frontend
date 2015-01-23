@@ -6,6 +6,11 @@ This structure was based on [Idiomatic CSS](https://github.com/necolas/idiomatic
 > * [Introduction](#introduction)
 > * [Syntaxe](#syntaxe)
 > * [Comments](#comments)
+> * [Declarations](#declarations)
+> * [Order of declarations](#order-of-declarations)
+> * [Summarized properties](#summarized-properties)
+> * [Nesting with Preprocessor](#nesting-with-preprocessor)
+> * [Pseudo elements](#pseudo-elements)
 
 ## Introduction
 > It was used a join naming concepts used by `SMACSS`, `BEM`, `SUIT CSS` for a more modular approach of the components.
@@ -79,4 +84,130 @@ Code is written and maintained by people. Make sure that the code is descriptive
 //  
 
 //  Basic comment
+```
+
+## Declarations
+In places where they are defined only one line of property, consider removing line breaks to improve reading and editing.
+
+Already in places where there is more than one value for a single property, consider breaking the line to better visualize each value.
+
+```sass
+// Only statement on a line
+.selector-1 { width: 10%; }
+.selector-2 { width: 20%; }
+.selector-3 { width: 30%; }
+
+// Declaration multiple lines
+.sprite {
+  display: inline-block;
+  width: 16px;
+  height: 15px;
+  background-image: url(../img/sprite.png);
+}
+
+// Not
+.selector {
+  background-image: linear-gradient(#fff, #ccc), linear-gradient(#f3c, #4ec);
+  box-shadow: 1px 1px 1px #000, 2px 2px 1px 1px #ccc inset;
+}
+
+// Yes
+.selector {
+  background-image:
+    linear-gradient(#fff, #ccc),
+    linear-gradient(#f3c, #4ec);
+  box-shadow:
+    1px 1px 1px #000,
+    2px 2px 1px 1px #ccc inset;
+}
+
+```
+
+## ordem de declaracoes
+Statements must be ordered by a single principle. The preference is related properties to be grouped and structurally important properties (for example, positioning and box-model) to be declared before typeface properties, or background color.
+
+```sass
+.selector {
+  // Positioning 
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  // Display & box model
+  display: inline-block;
+  overflow: hidden;
+  box-sizing: border-box;
+  width: 100px;
+  height: 100px;
+  padding: 10px;
+  border: 10px solid #333;
+  margin: 10px;
+
+  // Other
+  background: #000;
+  color: #fff;
+  font-family: sans-serif;
+  font-size: 16px;
+  text-align: right;
+}
+```
+
+## Summarized properties
+Esforce-se muito para usar declarações de propriedades resumidas onde você define todos os valores dessa propriedade. As propriedades resumidas mais usadas incluem:
+
+* `padding`
+* `margin`
+* `font`
+* `background`
+* `border`
+* `border-radius`
+
+```sass
+// Not
+.element {
+  margin-bottom: 10px;
+  background-color: red;
+  background-image: url("image.jpg");
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+
+// Yes
+.element {
+  margin: 0 0 10px;
+  background: red url("image.jpg");
+  border-radius: 3px 3px 0 0;
+}
+```
+
+## Nesting with Preprocessor
+Avoid nesting selectors (to "nesting"). Just because you can do it, does not mean you should do it always. It is a good practice ultilizar `class` `tags` and not even using` class` avoid using more than two nested `class`.
+
+```sass
+// Not
+.table > thead > tr > td { … }
+
+// Yes
+.table             { … }
+.table_thead       { … }
+.table_line        { … }
+.table_line_column { … }
+```
+
+## Pseudo elements
+Pseudo elements should be accessed by using a single colon `:`. Do not use double colons `::`.
+
+```sass
+// Not
+.button::before {
+  outline: 0;
+}
+
+// Yes
+.button:before {
+  outline: 0;
+}
 ```
