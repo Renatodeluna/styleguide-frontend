@@ -11,6 +11,7 @@ This structure was based on [Idiomatic CSS](https://github.com/necolas/idiomatic
 > * [Summarized properties](#summarized-properties)
 > * [Nesting with Preprocessor](#nesting-with-preprocessor)
 > * [Pseudo elements](#pseudo-elements)
+> * [Sass syntax](#sass-syntax)
 
 ## Introduction
 > It was used a join naming concepts used by `SMACSS`, `BEM`, `SUIT CSS` for a more modular approach of the components.
@@ -211,3 +212,22 @@ Pseudo elements should be accessed by using a single colon `:`. Do not use doubl
   outline: 0;
 }
 ```
+
+## Sass syntax
+
+Should serseguido the SCSS Sass syntax. Do not write code that follows the SASS syntax.
+
+```sass
+// Not
+.menu
+  &.is-open
+    display: block;
+    
+// Yes
+.menu {
+  &.is-open {
+    display: block;
+  }
+}
+````
+
