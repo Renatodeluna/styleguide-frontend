@@ -88,6 +88,7 @@ HTML attributes must use this standard order.
 * `for`, `type`, ou `href`
 * `src`, `for`, `type`, `href`
 * `title`, `alt`
+* `method`, `action`
 * `aria-*`, `role`
 
 ## Boolean attributes
