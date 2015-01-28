@@ -134,7 +134,7 @@ Set your editor with the following settings to avoid common inconsistencies in t
 
 Consider document and apply these settings for your project with [EditorConfig](http://editorconfig.org).
 
-## license
+## License
 
 [MIT License](http://opensource.org/licenses/MIT). © Copyright 2015, [@renatodeluna](http://twitter.com/renatodeluna).
 
