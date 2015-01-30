@@ -5,12 +5,14 @@ This structure was based on [Idiomatic CSS](https://github.com/necolas/idiomatic
 
 > * [Introduction](#introduction)
 > * [Syntaxe](#syntaxe)
+> * [Indenting](#indenting)
 > * [Comments](#comments)
 > * [Declarations](#declarations)
 > * [Order of declarations](#order-of-declarations)
 > * [Summarized properties](#summarized-properties)
 > * [Pseudo elements](#pseudo-elements)
 > * [Don't use @import](#don't-use-@import)
+> * [Don't use !import](#don't-use-!import)
 > * [Nesting with Preprocessor](#nesting-with-preprocessor)
 > * [Sass syntax](#sass-syntax)
 
@@ -34,6 +36,7 @@ This structure was based on [Idiomatic CSS](https://github.com/necolas/idiomatic
 * Use shorthand hex values where available, e.g., `#fff` instead of `#ffffff`.
 * Quote attribute values in selectors, e.g., `input[type="text"]`. They’re only optional in some cases, and it’s a good practice for consistency.
 * Avoid specifying units for zero values, e.g., `margin: 0;` instead of `margin: 0px;`.
+* Utilization hyphen to separate words in large or compound names.
 
 ```sass
 // Not
@@ -53,6 +56,71 @@ This structure was based on [Idiomatic CSS](https://github.com/necolas/idiomatic
   background-color: rgba(0,0,0,.5);
   box-shadow: 0 1px 2px #ccc, inset 0 1px 0 #fff;
 }
+```
+<b>Use underscores to separate a block of an element</b>. A block (or an element) must have a unique "name" (a `CSS` class) that could be used in a `CSS` rule. `CSS` class for an element is a block name and an element name separated by a hifen.
+
+It is necessary to include block name into a `CSS` class for an element to minimize cascading. It is also important to use tabs consistently to allow developers able indentificar an element unequivocally, no errors. We use hyphen to separate words in long names (for example, block-name) and one underscores to separate the name of the block form the name of the element:
+```sass
+.block-name_element-name {}
+.nav_nav-bar  {}
+.menu_item    {}
+.block_header {}
+.figure_img   {}
+.form-contact_fieldset{}
+```
+<b>Use double hyphen to structure modifiers</b>. A modifier component is a class that modifies the presentation of the core component in some way (for example, for a given component configuration). Change names must be separated from the component name by two hyphens:
+```sass
+.button--big    {}
+.button--small  {}
+.button--large  {}
+.box--expanded  {}
+.sidebar--right {}
+.block--12-colun{}
+```
+<b>Use the `is-` prefix to indicate the state of that element</b>. A state is something that augments and overrides all other styles. For example, a message may be in a success or error state.
+
+The msg module is simple enough and has an error state applied to it. One could imagine a success state could be applied to the message, alternatively. Finally, the field label has a hidden state applied to hide it from sight but still keep it for screen readers. In this case, we are actually applying the state to a base element and not overriding a layout or module.
+```sass
+.is-active    {}
+.is-hidden    {} 
+.is-visible   {} 
+.is-open      {} 
+.is-close     {} 
+.is-expanded  {} 
+.is-collapsed {} 
+.is-disabled  {}
+.is-active    {}
+.is-tab-active{}
+.is-error     {}
+.is-success   {}
+```
+
+## Indenting
+With individual declarations should proceed in order to indicate a heritage of the class, thereby making the child elements have a retreat twice the element or parent class and so on. But beware, care for it is not too used to the code do not be unproductive having to give many setbacks, use common sense.
+
+<b>CSS<b/>
+```sass
+.menu {}
+
+  .menu_list {}
+    
+    .menu_iten {}
+```
+<b>SASS<b/>
+
+`Sass` provides nesting functionality. That is to say, by writing this:
+```sass
+.menu {
+  .menu_list {
+    .menu_iten {
+      color: blue;
+    }
+  }
+}
+```
+…we will be left with this compiled `CSS`:
+```sass
+.menu .menu_list .menu_iten { color: blue; }
 ```
 
 ## Comments
@@ -256,6 +324,25 @@ Compared to `<link>`s, `@import` is slower, adds extra page requests, and can ca
 
 <!-- Yes -->
 <link rel="stylesheet" href="style.css">
+```
+
+## Don't use !import
+The `!Important` causes a property ignore any specific rule selector. That is, a property within a weight selector 1, can "win" another property in a weight selector 111. You can win up to a defined inline property! <b>So never use if you want your code to be scalable</b>.
+
+* In `print.css` where you need to really force a definitive style. In this case, no further rules will need to override the rules defined in `print.css`, so you have full control of what you are doing.
+
+* In other situations the `!Important` may be necessary, as to override styles out of your control. For example, if you are editing a template on a platform where there is no access to the original `CSS`, but can inject a new `CSS` to override some styles. Or, if this platform uses some inline styles you want to overwrite. But note that this is a case totally out of context scalable `CSS`. You do not have control over the `CSS`, it will not scale that way.
+
+```sass
+// Not, Not, Not...
+.one-half {
+    width: 50% !important;
+}
+
+// Not, Not, Not...
+.hidden {
+    display: none !important;
+}
 ```
 
 ## Nesting with Preprocessor
