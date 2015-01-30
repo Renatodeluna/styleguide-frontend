@@ -9,8 +9,9 @@ This structure was based on [Idiomatic CSS](https://github.com/necolas/idiomatic
 > * [Declarations](#declarations)
 > * [Order of declarations](#order-of-declarations)
 > * [Summarized properties](#summarized-properties)
-> * [Nesting with Preprocessor](#nesting-with-preprocessor)
 > * [Pseudo elements](#pseudo-elements)
+> * [Don't use @import](#don't-use-@import)
+> * [Nesting with Preprocessor](#nesting-with-preprocessor)
 > * [Sass syntax](#sass-syntax)
 
 ## Introduction
@@ -225,20 +226,6 @@ Esforce-se muito para usar declarações de propriedades resumidas onde você de
 }
 ```
 
-## Nesting with Preprocessor
-Avoid nesting selectors (to "nesting"). Just because you can do it, does not mean you should do it always. It is a good practice ultilizar `class` `tags` and not even using` class` avoid using more than two nested `class`.
-
-```sass
-// Not
-.table > thead > tr > td { … }
-
-// Yes
-.table        { … }
-.table_thead  { … }
-.table_line   { … }
-.table_column { … }
-```
-
 ## Pseudo elements
 Pseudo elements should be accessed by using a single colon `:`. Do not use double colons `::`.
 
@@ -252,6 +239,37 @@ Pseudo elements should be accessed by using a single colon `:`. Do not use doubl
 .button:before {
   outline: 0;
 }
+```
+
+## Don't use @import
+Compared to `<link>`s, `@import` is slower, adds extra page requests, and can cause other unforeseen problems. Avoid them and instead opt for an alternate approach:
+
+* Use multiple `<link>` elements
+* Compile your `CSS` with a preprocessor like `Sass` or `Less` into a single file
+* Concatenate your `CSS` files with features provided in `Rails`, `Jekyll`, and other environments
+
+```html
+<!-- Not -->
+<style>
+  @import url("style.css");
+</style>
+
+<!-- Yes -->
+<link rel="stylesheet" href="style.css">
+```
+
+## Nesting with Preprocessor
+Avoid nesting selectors (to "nesting"). Just because you can do it, does not mean you should do it always. It is a good practice ultilizar `class` `tags` and not even using` class` avoid using more than two nested `class`.
+
+```sass
+// Not
+.table > thead > tr > td { … }
+
+// Yes
+.table        { … }
+.table_thead  { … }
+.table_line   { … }
+.table_column { … }
 ```
 
 ## Sass syntax
