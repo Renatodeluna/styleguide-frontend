@@ -159,7 +159,7 @@ Already in places where there is more than one value for a single property, cons
 
 ```
 
-## ordem de declaracoes
+## Order of declarations
 Statements must be ordered by a single principle. The preference is related properties to be grouped and structurally important properties (for example, positioning and box-model) to be declared before typeface properties, or background color.
 
 ```sass
@@ -179,15 +179,21 @@ Statements must be ordered by a single principle. The preference is related prop
   width: 100px;
   height: 100px;
   padding: 10px;
-  border: 10px solid #333;
   margin: 10px;
+  
+  // Typography
+  font: normal 13px "Helvetica Neue", sans-serif;
+  line-height: 1.5;
+  color: #333;
+  text-align: center;
+
+  // Visual
+  background-color: #f5f5f5;
+  border: 1px solid #e5e5e5;
+  border-radius: 3px;
 
   // Other
-  background: #000;
-  color: #fff;
-  font-family: sans-serif;
-  font-size: 16px;
-  text-align: right;
+  opacity: 1;
 }
 ```
 
@@ -227,10 +233,10 @@ Avoid nesting selectors (to "nesting"). Just because you can do it, does not mea
 .table > thead > tr > td { … }
 
 // Yes
-.table             { … }
-.table_thead       { … }
-.table_line        { … }
-.table_line_column { … }
+.table        { … }
+.table_thead  { … }
+.table_line   { … }
+.table_column { … }
 ```
 
 ## Pseudo elements
