@@ -20,6 +20,8 @@ This structure was based on [Idiomatic CSS](https://github.com/necolas/idiomatic
 > * [Float values](#float-values)
 > * [Background URL](#background-url)
 > * [Attribute values](#attribute-values)
+> * [Selector structure](#selector-structure)
+> * [Organization](#Organization)
 
 ## Introduction
 > It was used a join naming concepts used by `SMACSS`, `BEM`, `SUIT CSS` for a more modular approach of the components.
@@ -450,5 +452,120 @@ input[type=radio] {
 // Yes
 input[type="radio"] {
   display: none;
+}
+```
+
+#Selector structure
+Add a line break after @extend/@include, variables, functions/placeholders/mixins and other rules.
+
+```sass
+// Not
+.selector {
+  @extend centered-content;
+  @include font-smoothing;
+  $color: red;
+  %inner-placeholder {
+    // ...
+  }
+  @mixin inner-mixin {
+    // ...
+  }
+  border: 1px solid gray;
+}
+
+// Yes
+.selector {
+  @extend centered-content;
+  @include font-smoothing;
+
+  $color: red;
+
+  %inner-placeholder {
+    // ...
+  }
+
+  @mixin inner-mixin {
+    // ...
+  }
+
+  border: 1px solid gray;
+}
+```
+
+#Organization
+* The order of declaration should look like:
+	1. `@extend` 
+	2. `@import`
+	3. Variable definitions
+	4. Functions, placeholders and mixins
+	5. Other rules
+
+```sass
+// Bad
+.button {
+  border: 3px solid seagreen;
+  @include border-radius(5px);
+  background: fuchsia;
+  @extend %button-base;
+}
+
+// Yes
+.button {
+  @extend %button-base;
+  @include border-radius(5px);
+
+  border: 3px solid seagreen;
+  background: fuchsia;
+}
+
+// Not
+.square {
+  @include border-radius(3px);
+  @extend %shape-base;
+  @include box-sizing(border-box);
+  @extend %square-base;
+  // Other rules
+}
+
+// Yes
+.square {
+  @extend %shape-base;
+  @extend %square-base;
+  @include border-radius(3px);
+  @include box-sizing(border-box);
+
+  // Other rules
+}
+
+// Not
+.selector {
+  border: 0;
+  @include font-smoothing;
+  @mixin inner-mixin {
+    // ...
+  }
+  @extend centered-content;
+  %inner-placeholder {
+    // ...
+  }
+  $color: red;
+}
+
+// Yes
+.selector {
+  @extend centered-content;
+  @include font-smoothing;
+
+  $color: red;
+
+  %inner-placeholder {
+    // ...
+  }
+
+  @mixin inner-mixin {
+    // ...
+  }
+
+  border: 1px solid gray;
 }
 ```
