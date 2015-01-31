@@ -456,7 +456,7 @@ input[type="radio"] {
 ```
 
 #Selector structure
-Add a line break after @extend/@include, variables, functions/placeholders/mixins and other rules.
+Add a line break after `@extend`/`@include`, `variables`, `functions`/`placeholders`/`mixins` and other rules.
 
 ```sass
 // Not
