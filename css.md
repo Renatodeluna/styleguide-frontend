@@ -15,6 +15,11 @@ This structure was based on [Idiomatic CSS](https://github.com/necolas/idiomatic
 > * [Don't use !import](#don't-use-!import)
 > * [Nesting with Preprocessor](#nesting-with-preprocessor)
 > * [Sass syntax](#sass-syntax)
+> * [@import](#@import)
+> * [Quotes](#Quotes)
+> * [Float values](#float-values)
+> * [Background URL](#background-url)
+> * [Attribute values](#attribute-values)
 
 ## Introduction
 > It was used a join naming concepts used by `SMACSS`, `BEM`, `SUIT CSS` for a more modular approach of the components.
@@ -57,9 +62,9 @@ This structure was based on [Idiomatic CSS](https://github.com/necolas/idiomatic
   box-shadow: 0 1px 2px #ccc, inset 0 1px 0 #fff;
 }
 ```
-<b>Use underscores to separate a block of an element</b>. A block (or an element) must have a unique "name" (a `CSS` class) that could be used in a `CSS` rule. `CSS` class for an element is a block name and an element name separated by a hifen.
+* <b>Use underscores to separate a block of an element</b>. A block (or an element) must have a unique "name" (a `CSS` class) that could be used in a `CSS` rule. `CSS` class for an element is a block name and an element name separated by a hifen.
 
-It is necessary to include block name into a `CSS` class for an element to minimize cascading. It is also important to use tabs consistently to allow developers able indentificar an element unequivocally, no errors. We use hyphen to separate words in long names (for example, block-name) and one underscores to separate the name of the block form the name of the element:
+* It is necessary to include block name into a `CSS` class for an element to minimize cascading. It is also important to use tabs consistently to allow developers able indentificar an element unequivocally, no errors. We use hyphen to separate words in long names (for example, block-name) and one underscores to separate the name of the block form the name of the element:
 ```sass
 .block-name_element-name {}
 .nav_nav-bar  {}
@@ -68,7 +73,7 @@ It is necessary to include block name into a `CSS` class for an element to minim
 .figure_img   {}
 .form-contact_fieldset{}
 ```
-<b>Use double hyphen to structure modifiers</b>. A modifier component is a class that modifies the presentation of the core component in some way (for example, for a given component configuration). Change names must be separated from the component name by two hyphens:
+* <b>Use double hyphen to structure modifiers</b>. A modifier component is a class that modifies the presentation of the core component in some way (for example, for a given component configuration). Change names must be separated from the component name by two hyphens:
 ```sass
 .button--big    {}
 .button--small  {}
@@ -77,9 +82,9 @@ It is necessary to include block name into a `CSS` class for an element to minim
 .sidebar--right {}
 .block--12-colun{}
 ```
-<b>Use the `is-` prefix to indicate the state of that element</b>. A state is something that augments and overrides all other styles. For example, a message may be in a success or error state.
+* <b>Use the `is-` prefix to indicate the state of that element</b>. A state is something that augments and overrides all other styles. For example, a message may be in a success or error state.
 
-The msg module is simple enough and has an error state applied to it. One could imagine a success state could be applied to the message, alternatively. Finally, the field label has a hidden state applied to hide it from sight but still keep it for screen readers. In this case, we are actually applying the state to a base element and not overriding a layout or module.
+* The msg module is simple enough and has an error state applied to it. One could imagine a success state could be applied to the message, alternatively. Finally, the field label has a hidden state applied to hide it from sight but still keep it for screen readers. In this case, we are actually applying the state to a base element and not overriding a layout or module.
 ```sass
 .is-active    {}
 .is-hidden    {} 
@@ -377,3 +382,73 @@ Should serseguido the SCSS Sass syntax. Do not write code that follows the SASS 
 }
 ````
 
+## @import
+Use double quotes to call it the modules " ".
+
+```sass
+// Not
+@import base/reset.scss;
+
+// Yes
+@import "base/reset.scss";
+```
+
+## Quotes
+Use double quotes ever.
+
+```sass
+// Not
+.selector:after {
+  content: 'Lorem Ipsum';
+}
+
+// Yes
+.selector:after {
+  content: "Lorem Ipsum";
+}
+```
+
+## Float values
+Don't prefix float values with a leading zero.
+
+```sass
+// Not
+.sidebar {
+  right: -0.85px;
+}
+
+// Yes
+.sidebar {
+  right: -.85px;
+}
+```
+
+## Background URL
+Quote background urls.
+
+```sass
+// Not
+.selector {
+  background: url(url/imagem.png) no-repeat;
+}
+
+// Yes
+.selector {
+  background: url("url/imagem.png") no-repeat;
+}
+```
+
+## Attribute values
+Quote attribute values in selectors.
+
+```sass
+// Not
+input[type=radio] {
+  display: none;
+}
+
+// Yes
+input[type="radio"] {
+  display: none;
+}
+```
