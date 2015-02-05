@@ -96,7 +96,6 @@ This structure was based on [Idiomatic CSS](https://github.com/necolas/idiomatic
 .is-expanded  {} 
 .is-collapsed {} 
 .is-disabled  {}
-.is-active    {}
 .is-tab-active{}
 .is-error     {}
 .is-success   {}
